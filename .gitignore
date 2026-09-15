@@ -1,0 +1,31 @@
+.env
+.env.*
+!.env.example
+relocation_data/
+.uv-cache/
+.venv/
+.ipynb_checkpoints/
+__pycache__/
+.pytest_cache/
+.chrome-*/
+*.zip
+Week 3 Project Handout*.docx
+.test-temp-*/
+~$*.docx
+Movewell_Project_Documentation.docx
+Movewell_One_Pager.docx
+Movewell_Project_Documentation_Formatted.docx
+
+# Submission materials (kept local)
+DEMO_SCRIPT.md
+PROJECT_DOCUMENTATION*.md
+PROJECT_SCOPE.md
+SUBMISSION_FORM_ANSWERS.md
+Movewell_A4_Project_Brief.docx
+requirements-docs.txt
+scripts/build_a4_brief.py
+scripts/build_submission_doc.py
+assets/agent-architecture.png
+assets/technology-stack.png
+evals/EVALUATION_REPORT.md
+evals/latest_metrics.json

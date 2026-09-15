@@ -1,0 +1,1 @@
+"""Relocation Copilot application package."""

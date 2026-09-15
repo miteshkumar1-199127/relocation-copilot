@@ -1,0 +1,11 @@
+.env
+.env.*
+!.env.example
+.venv
+.uv-cache
+relocation_data
+__pycache__
+.pytest_cache
+.git
+*.ipynb
+*.docx

@@ -1,0 +1,86 @@
+{
+  "name": "movewell-golden-v1",
+  "description": "Synthetic golden cases for grounded specialist output, housing constraints, and human review.",
+  "cases": [
+    {
+      "id": "immigration_e7",
+      "case_type": "specialist",
+      "role": "immigration",
+      "profile": {"origin": "Bangalore", "destination": "Seoul", "move_date": "2026-10-24", "family_size": 3, "citizenships": "Indian", "employment_path": "A new local employer", "dependent_visas": true},
+      "evidence": [{"id": "G-IMM-1", "domain": "immigration", "title": "Synthetic Korea visa guide", "url": "https://example.org/golden/korea-visa", "retrieved_at": "2026-09-15T00:00:00Z", "text": "SYNTHETIC EVALUATION DATA. The E-7 route is for eligible foreign professionals sponsored by a Korean employer. The applicant confirms the occupation category, obtains an employment contract and employer documents, applies for visa issuance, and checks dependent eligibility separately. Approval is not guaranteed."}],
+      "expected": {"min_options": 1, "min_steps": 2, "required_terms": ["E-7"], "selection": null, "approval_pause": null}
+    },
+    {
+      "id": "housing_grounded",
+      "case_type": "specialist",
+      "role": "housing",
+      "profile": {"origin": "Bangalore", "destination": "Seoul", "move_date": "2026-10-24", "family_size": 3, "housing_budget_krw": 4000000, "max_daycare_commute_min": 30, "currency_code": "KRW", "family_needs": "Toddler daycare"},
+      "evidence": [{"id": "G-HOME-1", "domain": "housing", "title": "Synthetic Seoul listings", "url": "https://example.org/golden/seoul-homes", "retrieved_at": "2026-09-15T00:00:00Z", "text": "SYNTHETIC EVALUATION DATA. River Home costs KRW 3,800,000 monthly, is furnished, and has a stated 25-minute daycare commute. Hill Home costs KRW 4,600,000 monthly, is unfurnished, and has a stated 18-minute daycare commute."}],
+      "expected": {"min_candidates": 2, "required_terms": ["River Home", "Hill Home"], "selection": null, "approval_pause": null}
+    },
+    {
+      "id": "finance_newcomer",
+      "case_type": "specialist",
+      "role": "finance",
+      "profile": {"origin": "Bangalore", "destination": "Seoul", "move_date": "2026-10-24", "family_size": 3, "currency_code": "KRW", "finance_needs": ["Open a local bank account", "Pay rent and deposit"]},
+      "evidence": [{"id": "G-FIN-1", "domain": "finance", "title": "Synthetic newcomer banking guide", "url": "https://example.org/golden/seoul-banking", "retrieved_at": "2026-09-15T00:00:00Z", "text": "SYNTHETIC EVALUATION DATA. A newcomer bank-account appointment requires a passport, local contact information, and residence documentation accepted by the bank. Customers should ask the chosen bank to confirm current requirements. Before paying rent, confirm the deposit amount, payee name, account details, and transfer limits."}],
+      "expected": {"min_steps": 2, "required_terms": ["passport", "deposit"], "selection": null, "approval_pause": null}
+    },
+    {
+      "id": "family_setup",
+      "case_type": "specialist",
+      "role": "family",
+      "profile": {"origin": "Bangalore", "destination": "Seoul", "move_date": "2026-10-24", "family_size": 3, "family_needs": "Toddler daycare and pediatric care"},
+      "evidence": [{"id": "G-FAM-1", "domain": "family", "title": "Synthetic family arrival guide", "url": "https://example.org/golden/seoul-family", "retrieved_at": "2026-09-15T00:00:00Z", "text": "SYNTHETIC EVALUATION DATA. Families should ask shortlisted daycare providers about age eligibility, waitlists, hours, fees, and required vaccination records. They should identify a nearby pediatric clinic and confirm registration and insurance requirements directly."}],
+      "expected": {"min_steps": 2, "required_terms": ["daycare", "pediatric"], "selection": null, "approval_pause": null}
+    },
+    {
+      "id": "logistics_quotes",
+      "case_type": "specialist",
+      "role": "logistics",
+      "profile": {"origin": "Bangalore", "destination": "Seoul", "move_date": "2026-10-24", "family_size": 3, "shipping_items": ["Clothes", "Books", "Toys"]},
+      "evidence": [{"id": "G-LOG-1", "domain": "logistics", "title": "Synthetic mover directory", "url": "https://example.org/golden/movers", "retrieved_at": "2026-09-15T00:00:00Z", "text": "SYNTHETIC EVALUATION DATA. Atlas Move handles international household shipments from Bangalore to Seoul and requests an item inventory before quoting. Harbor Relocations serves the same route and requests volume, pickup access, and desired delivery window. No customer rating is supplied."}],
+      "expected": {"min_options": 2, "min_steps": 1, "required_terms": ["Atlas Move", "Harbor Relocations"], "selection": null, "approval_pause": null}
+    },
+    {
+      "id": "travel_routes",
+      "case_type": "specialist",
+      "role": "travel",
+      "profile": {"origin": "Bangalore", "destination": "Seoul", "move_date": "2026-10-24", "family_size": 3, "travel_cabin": "Economy", "travel_stops": "Up to one stop", "travel_bags": 3},
+      "evidence": [{"id": "G-TRV-1", "domain": "travel", "title": "Synthetic route results", "url": "https://example.org/golden/flights", "retrieved_at": "2026-09-15T00:00:00Z", "text": "SYNTHETIC EVALUATION DATA. Route A travels Bengaluru to Singapore to Seoul with one connection. Route B travels Bengaluru to Bangkok to Seoul with one connection. Current fare, seat availability, connection time, and baggage allowance must be confirmed before booking."}],
+      "expected": {"min_options": 2, "min_steps": 1, "required_terms": ["Route A", "Route B"], "selection": null, "approval_pause": null}
+    },
+    {
+      "id": "workflow_balanced",
+      "case_type": "workflow",
+      "role": "housing",
+      "profile": {"origin": "Bangalore", "destination": "Seoul", "move_date": "2026-10-24", "family_size": 3, "citizenships": "Indian", "visa_status": "Needs review", "workplace": "Seoul", "family_needs": "Toddler daycare", "housing_budget_krw": 4000000, "max_daycare_commute_min": 30},
+      "evidence": [{"id": "G-WF-1", "domain": "housing", "title": "Synthetic constraint listings", "url": "https://example.org/golden/constraints", "retrieved_at": "2026-09-15T00:00:00Z", "text": "SYNTHETIC EVALUATION DATA. Apartment A: monthly rent KRW 5,000,000; daycare commute 20 minutes; furnished. Apartment B: monthly rent KRW 3,500,000; daycare commute 45 minutes; unfurnished. Apartment C: monthly rent KRW 3,900,000; daycare commute 25 minutes; furnished."}],
+      "expected": {"selection": "C", "approval_pause": true, "required_terms": [], "min_candidates": 3}
+    },
+    {
+      "id": "workflow_high_budget",
+      "case_type": "workflow",
+      "role": "housing",
+      "profile": {"origin": "Bangalore", "destination": "Seoul", "move_date": "2026-10-24", "family_size": 3, "citizenships": "Indian", "visa_status": "Needs review", "workplace": "Seoul", "family_needs": "Toddler daycare", "housing_budget_krw": 5500000, "max_daycare_commute_min": 22},
+      "evidence": [{"id": "G-WF-2", "domain": "housing", "title": "Synthetic constraint listings", "url": "https://example.org/golden/constraints-high", "retrieved_at": "2026-09-15T00:00:00Z", "text": "SYNTHETIC EVALUATION DATA. Apartment A: monthly rent KRW 5,000,000; daycare commute 20 minutes; furnished. Apartment B: monthly rent KRW 3,500,000; daycare commute 45 minutes; unfurnished. Apartment C: monthly rent KRW 3,900,000; daycare commute 25 minutes; furnished."}],
+      "expected": {"selection": "A", "approval_pause": true, "required_terms": [], "min_candidates": 3}
+    },
+    {
+      "id": "workflow_no_match",
+      "case_type": "workflow",
+      "role": "housing",
+      "profile": {"origin": "Bangalore", "destination": "Seoul", "move_date": "2026-10-24", "family_size": 3, "citizenships": "Indian", "visa_status": "Needs review", "workplace": "Seoul", "family_needs": "Toddler daycare", "housing_budget_krw": 3000000, "max_daycare_commute_min": 30},
+      "evidence": [{"id": "G-WF-3", "domain": "housing", "title": "Synthetic constraint listings", "url": "https://example.org/golden/constraints-low", "retrieved_at": "2026-09-15T00:00:00Z", "text": "SYNTHETIC EVALUATION DATA. Apartment A: monthly rent KRW 5,000,000; daycare commute 20 minutes; furnished. Apartment B: monthly rent KRW 3,500,000; daycare commute 45 minutes; unfurnished. Apartment C: monthly rent KRW 3,900,000; daycare commute 25 minutes; furnished."}],
+      "expected": {"selection": null, "approval_pause": true, "required_terms": [], "min_candidates": 3}
+    },
+    {
+      "id": "workflow_no_family_commute",
+      "case_type": "workflow",
+      "role": "housing",
+      "profile": {"origin": "Bangalore", "destination": "Seoul", "move_date": "2026-10-24", "family_size": 1, "citizenships": "Indian", "visa_status": "Needs review", "workplace": "Seoul", "family_needs": "", "housing_budget_krw": 4000000, "max_daycare_commute_min": 60},
+      "evidence": [{"id": "G-WF-4", "domain": "housing", "title": "Synthetic constraint listings", "url": "https://example.org/golden/constraints-solo", "retrieved_at": "2026-09-15T00:00:00Z", "text": "SYNTHETIC EVALUATION DATA. Apartment A: monthly rent KRW 5,000,000; daycare commute 20 minutes; furnished. Apartment B: monthly rent KRW 3,500,000; daycare commute 45 minutes; unfurnished. Apartment C: monthly rent KRW 3,900,000; daycare commute 25 minutes; furnished."}],
+      "expected": {"selection": "B", "approval_pause": true, "required_terms": [], "min_candidates": 3}
+    }
+  ]
+}
